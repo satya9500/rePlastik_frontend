@@ -1,1 +1,17 @@
-<router-outlet></router-outlet>
+<nb-layout>
+  <nb-layout-header fixed>
+    <a href="#" (click)="toggle()"><nb-icon icon="menu"></nb-icon></a>&nbsp;&nbsp;&nbsp;
+    <h3>RePlastik</h3>
+    <div style="position:absolute;right: 50px">
+      <nb-user name="John Doe" title="Engineer"></nb-user>
+    </div>
+  </nb-layout-header>
+
+  <nb-sidebar>
+    <nb-menu [items]="items"></nb-menu>
+  </nb-sidebar>
+
+  <nb-layout-column class="colored-column-basic">
+    <router-outlet></router-outlet>
+  </nb-layout-column>
+</nb-layout>

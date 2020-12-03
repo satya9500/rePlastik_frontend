@@ -14,13 +14,15 @@ import {
   NbUserModule
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { HomepageComponent } from './homepage/homepage.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutComponent
+    LayoutComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
