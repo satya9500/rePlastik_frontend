@@ -1,19 +1,28 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {HomepageComponent} from './homepage/homepage.component';
 import {RecyleNowComponent} from './recyle-now/recyle-now.component';
 import {
   NbAuthComponent,
   NbLoginComponent,
-  NbRegisterComponent,
   NbLogoutComponent,
+  NbRegisterComponent,
   NbRequestPasswordComponent,
   NbResetPasswordComponent,
 } from '@nebular/auth';
+import {ShellComponent} from './shell/shell.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
-  {path: 'home', component: HomepageComponent},
-  {path: 'recycle', component: RecyleNowComponent},
+  {
+    path: 'app',
+    component: ShellComponent,
+    children: [
+      {path: 'home', component: HomepageComponent},
+      {path: 'recycle', component: RecyleNowComponent}
+    ],
+    canActivate: [AuthGuard]
+  },
   {
     path: 'auth',
     component: NbAuthComponent,

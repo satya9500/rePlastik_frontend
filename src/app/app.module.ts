@@ -18,14 +18,23 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RecyleNowComponent } from './recyle-now/recyle-now.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import { NbPasswordAuthStrategy, NbAuthModule } from '@nebular/auth';
+import { NbPasswordAuthStrategy, NbAuthModule, NbAuthJWTToken, NbAuthService  } from '@nebular/auth';
+import { ShellComponent } from './shell/shell.component';
+import {AuthGuard} from './auth.guard';
 
+const formSetting: any = {
+  redirectDelay: 0,
+  showMessages: {
+    success: true,
+  },
+};
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
     HomepageComponent,
-    RecyleNowComponent
+    RecyleNowComponent,
+    ShellComponent
   ],
   imports: [
     BrowserModule,
@@ -53,12 +62,55 @@ import { NbPasswordAuthStrategy, NbAuthModule } from '@nebular/auth';
       strategies: [
         NbPasswordAuthStrategy.setup({
           name: 'email',
+          token: {
+            class: NbAuthJWTToken,
+            key: 'token'
+          },
+          baseEndpoint: '',
+          login: {
+            // ...
+            endpoint: '/api/v1/auth/login',
+            method: 'post',
+            redirect: {
+              success: '/app/home',
+              failure: null, // stay on the same page
+            },
+          },
+          register: {
+            // ...
+            endpoint: '/api/v1/auth/register',
+            method: 'post',
+            redirect: {
+              success: '/app/home',
+              failure: null, // stay on the same page
+            }
+          },
+          logout: {
+            endpoint: '/api/v1/auth/logout',
+            method: 'get',
+            redirect: {
+              success: '/auth/login',
+              failure: null, // stay on the same page
+            }
+          },
+          resetPass: {
+            endpoint: '/api/v1/auth/reset',
+            method: 'post',
+          },
         }),
       ],
-      forms: {},
+      forms: {
+        login: formSetting,
+        register: formSetting,
+        requestPassword: formSetting,
+        resetPassword: formSetting,
+        logout: {
+          redirectDelay: 0,
+        },
+      },
     }),
   ],
-  providers: [NbSidebarService, NbMenuService],
+  providers: [NbSidebarService, NbMenuService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

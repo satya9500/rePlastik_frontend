@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FetchService} from '../services/fetch.service';
 
 @Component({
@@ -9,13 +9,16 @@ import {FetchService} from '../services/fetch.service';
 
 export class HomepageComponent implements OnInit {
 
-  constructor(private fetchService: FetchService) { }
+  constructor(private fetchService: FetchService) {
+  }
+
   public news: any;
   ngOnInit(): void {
     this.fetchService.getNews().subscribe((res: any) => {
       this.news = res.articles;
       console.log(this.news);
     });
+
   }
 
 }
