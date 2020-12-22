@@ -1,1 +1,104 @@
-<p>recyle-now works!</p>
+<nb-card>
+  <nb-card-body>
+    <nb-stepper #stepper>
+      <nb-step [stepControl]="firstForm" label="First step">
+        <form [formGroup]="firstForm" (ngSubmit)="onFirstSubmit()" class="step-container">
+          <p class="lorem">
+           It's great that you want to recycle plastic, we are here to help you out with the process.
+            What could be better that satisfaction you get after contributing towards saving the planet bit by bit.
+            We will be more than happy in assisting you with the process.
+            May we please know what type of product are you trying to recycle ?
+          </p>
+          <div class="input-group">
+            <label>
+              <input nbInput type="text" placeholder="Enter product type" class="form-control" formControlName="firstCtrl"
+                     [ngClass]="{'form-control-danger': firstForm.invalid && (firstForm.dirty || firstForm.touched)}">
+            </label>
+          </div>
+          <button type="button" nbButton nbStepperNext>next</button>
+        </form>
+      </nb-step>
+      <nb-step [stepControl]="secondForm" label="Second step" >
+        <form [formGroup]="secondForm" (ngSubmit)="onSecondSubmit()" class="step-container">
+          <p class="lorem">
+            Now it's time to upload a picture of the product which you want to recycle. Our Machine Learning
+            Algorithms will intelligently identify the best suitable way to recycle the plastic and will also
+            suggest you some videos which you can follow to recycle.
+          </p>
+          <div class="input-group">
+            <input nbInput (change)="onFileSelect($event)" type="file" placeholder="Choose photo" class="form-control" formControlName="secondCtrl"
+                   [ngClass]="{'form-control-danger': secondForm.invalid && (secondForm.dirty || secondForm.touched)}">
+          </div>
+          <br>
+          <button type="button" nbButton nbStepperPrevious>prev</button>
+          &nbsp;&nbsp;&nbsp;
+          <button type="button" nbButton nbStepperNext (click)="analyzePhoto()">next</button>
+        </form>
+      </nb-step>
+      <nb-step [stepControl]="thirdForm" label="Third step">
+        <form [formGroup]="thirdForm" (ngSubmit)="onThirdSubmit()" class="step-container">
+          <p class="lorem">
+            <b>Here is all the information you need !</b>
+          </p>
+          <div class="input-group">
+            <nb-card style="width: 100%;">
+              <nb-card-header>{{productName}}</nb-card-header>
+              <nb-card-body class="row">
+                <div class="col-4" >
+                  <img [src]=imageUrl alt="" style="min-height: 300px;max-height: 300px;min-width: 350px;max-width: 350px;"/>
+                </div>
+                <div class="col-8">
+                  <nb-list>
+                    <nb-list-item>
+                      <b>Plastic Type:</b>&nbsp;PVC
+                    </nb-list-item>
+                    <nb-list-item>
+                      <b>Chemical Name:</b>&nbsp;Polyvinyl chloride
+                    </nb-list-item>
+                    <nb-list-item>
+                      <b>Recycability:</b>&nbsp;Moderately recyclable
+                    </nb-list-item>
+                    <nb-list-item>
+                      <b>Carbon Footprint:</b>&nbsp;85.09 (mj/Kg)
+                    </nb-list-item>
+                    <nb-list-item>
+                      <b>Global Production:</b>&nbsp;40 millon tons per year
+                    </nb-list-item>
+                    <nb-list-item>
+                      <b>Time to degrade:</b>&nbsp;50 years
+                    </nb-list-item>
+                  </nb-list>
+                </div>
+              </nb-card-body>
+              <nb-card-footer>
+                Rigid PVC has very high density making it very strong.
+                It is long lasting and very economical, making it an easy choice for many industrial applications
+                like construction.
+                Not biodegradable . When burned, it emits hydrogen chloride (HCl) fumes which is carcinogenic
+              </nb-card-footer>
+            </nb-card>
+          </div>
+          <div class="row">
+            <nb-card *ngFor="let video of result" class="col-6">
+              <nb-card-header>{{video.snippet.title}}</nb-card-header>
+              <nb-card-body>
+                  <iframe width="100%" height="300px"
+                          [src]=video.videoUrl>
+                  </iframe>
+              </nb-card-body>
+              <nb-card-footer>By Youtube</nb-card-footer>
+            </nb-card>
+          </div>
+          <button type="button" nbButton nbStepperPrevious>prev</button>&nbsp;&nbsp;
+          <button type="button" nbButton nbStepperNext>Confirm</button>
+        </form>
+      </nb-step>
+      <nb-step [stepControl]="thirdForm" [hidden]="true" label="Third step">
+        <div class="step-container">
+          <h3>Hurray!</h3>
+          <button type="button" nbButton (click)="stepper.reset()">Try again</button>
+        </div>
+      </nb-step>
+    </nb-stepper>
+  </nb-card-body>
+</nb-card>

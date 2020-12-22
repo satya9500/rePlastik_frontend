@@ -12,9 +12,9 @@ export class AppComponent {
   public title = 'rePlastik';
   public items: NbMenuItem[] = [
     {
-      title: 'Profile',
-      icon: 'person-outline',
-      link: '/profile'
+      title: 'Home',
+      icon: 'home-outline',
+      link: '/home'
     },
     {
       title: 'Let\'s Recycle',
