@@ -1,1 +1,14 @@
-<p>homepage works!</p>
+<h2 class="text-center">Latest News related to environment</h2>
+<div class="row">
+    <nb-card *ngFor="let newsOne of news" accent="primary" class="col-md-5 m-5 p-0" size="tiny">
+<!--      <div class="row">-->
+<!--     <div class="col-md-4" [ngStyle]="{'background-image': 'url('+newsOne.urlToImage+')'}">-->
+<!--     </div>-->
+      <nb-card-header>{{newsOne.title}}</nb-card-header>
+      <nb-card-body>
+        {{newsOne.description}}<br>
+        <a href="{{newsOne.url}}" target="_blank" style="text-decoration: none;">Read More...</a><br>
+      </nb-card-body>
+      <nb-card-footer><span>Source: {{newsOne.source.name}}</span> <span class="float-right">Author: {{newsOne.author}}</span></nb-card-footer>
+    </nb-card>
+</div>

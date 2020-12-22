@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './layout/layout.component';
 import {
-  NbActionsModule,
+  NbActionsModule, NbCardModule, NbContextMenuModule,
   NbIconModule,
   NbLayoutModule, NbMenuModule, NbMenuService,
   NbSidebarModule,
@@ -15,6 +15,9 @@ import {
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { HomepageComponent } from './homepage/homepage.component';
+import { HttpClientModule } from '@angular/common/http';
+import { RecyleNowComponent } from './recyle-now/recyle-now.component';
+
 
 
 
@@ -22,7 +25,8 @@ import { HomepageComponent } from './homepage/homepage.component';
   declarations: [
     AppComponent,
     LayoutComponent,
-    HomepageComponent
+    HomepageComponent,
+    RecyleNowComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +39,9 @@ import { HomepageComponent } from './homepage/homepage.component';
     NbSidebarModule,
     NbUserModule,
     NbMenuModule.forRoot(),
+    NbCardModule,
+    HttpClientModule,
+    NbContextMenuModule
   ],
   providers: [NbSidebarService, NbMenuService],
   bootstrap: [AppComponent]
