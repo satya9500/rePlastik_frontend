@@ -1,0 +1,13 @@
+<h2 class="text-center">Your Recycle History</h2>
+<div class="row m-5">
+<nb-card status="success" *ngFor="let each of history" class="col-md-4 p-2">
+  <nb-card-header class="text-center">{{each.productName}}</nb-card-header>
+  <nb-card-body class="text-center">
+    <img [src]="each.imageLink" style="min-height: 300px;max-height: 300px;min-width: 350px;max-width: 350px;"/>
+  </nb-card-body>
+  <nb-card-footer class="text-center">
+    <b>Plastic Type:</b>{{each.plasticType}}<br><br>
+    <b>Captured On: </b>{{each.createdAt | date:'medium'}}
+  </nb-card-footer>
+</nb-card>
+</div>

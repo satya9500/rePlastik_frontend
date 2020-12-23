@@ -11,7 +11,8 @@ import {
   NbResetPasswordComponent,
 } from '@nebular/auth';
 import {ShellComponent} from './shell/shell.component';
-import { AuthGuard } from './auth.guard';
+import {AuthGuard} from './auth.guard';
+import {HistoryComponent} from './history/history.component';
 
 const routes: Routes = [
   {
@@ -19,7 +20,8 @@ const routes: Routes = [
     component: ShellComponent,
     children: [
       {path: 'home', component: HomepageComponent},
-      {path: 'recycle', component: RecyleNowComponent}
+      {path: 'recycle', component: RecyleNowComponent},
+      {path: 'history', component: HistoryComponent}
     ],
     canActivate: [AuthGuard]
   },

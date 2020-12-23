@@ -21,6 +21,9 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { NbPasswordAuthStrategy, NbAuthModule, NbAuthJWTToken, NbAuthService  } from '@nebular/auth';
 import { ShellComponent } from './shell/shell.component';
 import {AuthGuard} from './auth.guard';
+import { HistoryComponent } from './history/history.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { PlasticDetailsComponent } from './plastic-details/plastic-details.component';
 
 const formSetting: any = {
   redirectDelay: 0,
@@ -34,10 +37,13 @@ const formSetting: any = {
     LayoutComponent,
     HomepageComponent,
     RecyleNowComponent,
-    ShellComponent
+    ShellComponent,
+    HistoryComponent,
+    PlasticDetailsComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     NbThemeModule.forRoot(),
     NbEvaIconsModule,

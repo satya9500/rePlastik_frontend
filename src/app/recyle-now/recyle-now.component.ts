@@ -68,6 +68,7 @@ export class RecyleNowComponent implements OnInit {
     this.loading = true;
     const formData = new FormData();
     formData.append('img', this.uploadForm.get('img').value);
+    formData.append('productName', this.productName);
     this.post.analyzeImage(formData).subscribe((res: any) => {
       this.result = res.ytResult.items;
       for (const video of this.result) {
@@ -81,7 +82,7 @@ export class RecyleNowComponent implements OnInit {
       console.log(err);
       this.toastrService.show('',
         err.error.error,
-        {duration: 1000, destroyByClick: true, status: 'danger'});
+        {duration: 5000, destroyByClick: true, status: 'danger'});
     });
   }
 }
