@@ -18,31 +18,34 @@ Generates Visual reports using plotly.
 <hr>
 
 ### Registration Page
-![Registration Page](https://ibb.co/9YWtXq9) 
+![Registration Page](Screenshots/register.png) 
 
 ### Login Page
-![Login Page](https://ibb.co/9TN0kmx) 
+![Login Page](Screenshots/login.png) 
 
 ### Home Page
-![Login Page](https://ibb.co/ZhpQ22F) 
+![Home Page](Screenshots/home.png) 
 
 ### Classification Steps
 
 **First**
-![First Page](https://ibb.co/kGL8W6q) 
+![First Page](Screenshots/recycle1.png) 
 
 **Second**
-![Second Page](https://ibb.co/kGL8W6q)
+![Second Page](Screenshots/recycle2.png)
 
 **Third**
- ![Third Page](https://ibb.co/Xph1t22)
- ![Third Page](https://ibb.co/88G76zk)
+ ![Third Page](Screenshots/recycle3.png)
+ ![Third Page](Screenshots/recycle3_2.png)
 
 ### Classification History
-![Classification History](https://ibb.co/6gN00gn)
+![Classification History](Screenshots/history.png)
 
 ### Visual Report
-![Visual Report](https://ibb.co/C50qbTS)
+![Visual Report](Screenshots/graph.png)
+
+### Search Page
+![Search Page](Screenshots/search.png)
 <hr>
 
 #### How to run 
