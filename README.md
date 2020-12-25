@@ -1,27 +1,54 @@
-# Frontend
+# RePlastik
+This project classifies types of plastics ad gives insights about the same to the users.
+Also suggests recycling/reusing process after analyzing the plastic.
+Generates Visual reports using plotly.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.3.
+[Backend of this project](https://github.com/satya9500/rePlastik_backend)
+[ML Models for this project](https://github.com/satya9500/rePlastik_ML)
 
-## Development server
+## Tech Stack
+1. Frontend - Angular 
+2. UI Component Library - [Nebular](https://akveo.github.io/nebular/docs/getting-started/what-is-nebular#what-is-nebular)
+3. Graphs - PlotlyJS
+4. Backend - NodeJS
+5. DB - MongoDB
+6. ML Models and APIs - Flask and fastai
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Screenshots
+<hr>
 
-## Code scaffolding
+### Registration Page
+![Registration Page](https://ibb.co/9YWtXq9) 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Login Page
+![Login Page](https://ibb.co/9TN0kmx) 
 
-## Build
+### Home Page
+![Login Page](https://ibb.co/ZhpQ22F) 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### Classification Steps
 
-## Running unit tests
+**First**
+![First Page](https://ibb.co/kGL8W6q) 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+**Second**
+![Second Page](https://ibb.co/kGL8W6q)
 
-## Running end-to-end tests
+**Third**
+ ![Third Page](https://ibb.co/Xph1t22)
+ ![Third Page](https://ibb.co/88G76zk)
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+### Classification History
+![Classification History](https://ibb.co/6gN00gn)
 
-## Further help
+### Visual Report
+![Visual Report](https://ibb.co/C50qbTS)
+<hr>
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+#### How to run 
+**Make sure you have Angular 10 installed and flask + nodejs backend are running**
+1. `git clone https://github.com/satya9500/rePlastik_frontend.git`
+2. `cd rePlastik_frontend`
+3. `npm i`
+4. `ng serve --proxy-config proxy.conf.json`
+
