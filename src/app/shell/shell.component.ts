@@ -29,6 +29,11 @@ export class ShellComponent implements OnInit {
       link: '/app/history'
     },
     {
+      title: 'Visual Report',
+      icon: 'activity-outline',
+      link: '/app/report'
+    },
+    {
       title: 'My Rewards',
       icon: 'award-outline',
       link: '/app/rewards'

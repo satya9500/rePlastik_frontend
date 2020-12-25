@@ -42,7 +42,7 @@
           </p>
           <div class="input-group">
             <nb-card style="width: 100%;">
-              <nb-card-header>{{productName}}</nb-card-header>
+              <nb-card-header>{{productNameFromFlask}}</nb-card-header>
               <nb-card-body class="row">
                 <div class="col-4" >
                   <img [src]=imageUrl alt="" style="min-height: 300px;max-height: 300px;min-width: 350px;max-width: 350px;"/>
@@ -50,31 +50,29 @@
                 <div class="col-8">
                   <nb-list>
                     <nb-list-item>
-                      <b>Plastic Type:</b>&nbsp;PVC
+                      <b>Plastic Type:</b>&nbsp;{{plasticType}}
                     </nb-list-item>
                     <nb-list-item>
-                      <b>Chemical Name:</b>&nbsp;Polyvinyl chloride
+                      <b>Chemical Name:</b>&nbsp;{{chemicalName}}
                     </nb-list-item>
                     <nb-list-item>
-                      <b>Recycability:</b>&nbsp;Moderately recyclable
+                      <b>Recycability:</b>&nbsp;{{recycability}}
                     </nb-list-item>
                     <nb-list-item>
-                      <b>Carbon Footprint:</b>&nbsp;85.09 (mj/Kg)
+                      <b>Carbon Footprint:</b>&nbsp;{{footprint}}
                     </nb-list-item>
                     <nb-list-item>
-                      <b>Global Production:</b>&nbsp;40 millon tons per year
+                      <b>Global Production:</b>&nbsp;{{production}}
                     </nb-list-item>
                     <nb-list-item>
-                      <b>Time to degrade:</b>&nbsp;50 years
+                      <b>Time to degrade:</b>&nbsp;{{degradeTime}}
                     </nb-list-item>
                   </nb-list>
                 </div>
               </nb-card-body>
               <nb-card-footer>
-                Rigid PVC has very high density making it very strong.
-                It is long lasting and very economical, making it an easy choice for many industrial applications
-                like construction.
-                Not biodegradable . When burned, it emits hydrogen chloride (HCl) fumes which is carcinogenic
+                {{plasticDescription}}
+                {{hazard}}
               </nb-card-footer>
             </nb-card>
           </div>

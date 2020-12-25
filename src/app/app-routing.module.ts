@@ -13,6 +13,7 @@ import {
 import {ShellComponent} from './shell/shell.component';
 import {AuthGuard} from './auth.guard';
 import {HistoryComponent} from './history/history.component';
+import {GraphComponent} from './graph/graph.component';
 
 const routes: Routes = [
   {
@@ -21,7 +22,8 @@ const routes: Routes = [
     children: [
       {path: 'home', component: HomepageComponent},
       {path: 'recycle', component: RecyleNowComponent},
-      {path: 'history', component: HistoryComponent}
+      {path: 'history', component: HistoryComponent},
+      {path: 'report', component: GraphComponent}
     ],
     canActivate: [AuthGuard]
   },
@@ -55,6 +57,10 @@ const routes: Routes = [
       },
     ],
   },
+  {
+    path: '**',
+    redirectTo: 'app/home'
+  }
 ];
 
 @NgModule({

@@ -1,0 +1,17 @@
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+@media screen and (orientation: portrait) {
+  .plot {
+    width: 80vw !important;
+    height: 45vh !important;
+  }
+}
+@media screen and (orientation: landscape) {
+  .plot {
+    width: 80vw !important;
+    height: 70vh !important;
+  }
+}

@@ -21,8 +21,12 @@ export class FetchService {
   }
 
   getHistory(): any {
-    console.log(this.login_token);
     return this.http.get(`/api/v1/work/history`, {headers: this.headers});
   }
+
+  getYtVideos(data: any): any {
+    return this.http.post(`/api/v1/work/yt`, data, {headers: this.headers});
+  }
+
 
 }

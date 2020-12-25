@@ -16,4 +16,8 @@ export class PostService {
   analyzeImage(data: any): any {
     return this.http.post('/api/v1/work/perform', data, {headers: this.headers});
   }
+
+  getFlaskData(data: any): any {
+    return this.http.post('http://localhost:5000/', data);
+  }
 }

@@ -10,7 +10,7 @@ export class HistoryComponent implements OnInit {
 
   constructor(private fetchService: FetchService) {
   }
-  history:any;
+  history: any;
 
   ngOnInit(): void {
     this.fetchService.getHistory().subscribe((res: any) => {

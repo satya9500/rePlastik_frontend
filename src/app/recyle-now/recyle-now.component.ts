@@ -3,6 +3,7 @@ import {FormBuilder} from '@angular/forms';
 import {PostService} from '../services/post.service';
 import {NbToastrService} from '@nebular/theme';
 import { DomSanitizer } from '@angular/platform-browser';
+import {FetchService} from '../services/fetch.service';
 
 @Component({
   selector: 'app-recyle-now',
@@ -11,7 +12,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class RecyleNowComponent implements OnInit {
 
-  constructor(private dom: DomSanitizer, private fb: FormBuilder, private post: PostService, private toastrService: NbToastrService) {
+  constructor(private fetchService: FetchService, private dom: DomSanitizer, private fb: FormBuilder, private post: PostService, private toastrService: NbToastrService) {
   }
 
   firstForm: any;
@@ -63,6 +64,16 @@ export class RecyleNowComponent implements OnInit {
     this.productName = this.firstForm.value.firstCtrl;
   }
 
+  plasticType: any;
+  chemicalName: any;
+  recycability: any;
+  footprint: any;
+  production: any;
+  degradeTime: any;
+  plasticDescription: any;
+  hazard: any;
+  productNameFromFlask: any;
+
   analyzePhoto(): void {
     console.log(this.firstForm);
     this.loading = true;
@@ -70,14 +81,33 @@ export class RecyleNowComponent implements OnInit {
     formData.append('img', this.uploadForm.get('img').value);
     formData.append('productName', this.productName);
     this.post.analyzeImage(formData).subscribe((res: any) => {
-      this.result = res.ytResult.items;
-      for (const video of this.result) {
-        video.videoUrl = `https://www.youtube.com/embed/${video.id.videoId}`;
-        video.videoUrl = this.dom.bypassSecurityTrustResourceUrl(video.videoUrl);
-      }
-      console.log(this.result);
-      this.imageUrl = res.imageUrl;
-      this.loading = false;
+      this.post.getFlaskData(formData).subscribe((flaskRes: any) => {
+        console.log(flaskRes);
+        this.plasticType = flaskRes.predictions[0].p_type;
+        this.chemicalName = flaskRes.predictions[0].full_name;
+        this.recycability = flaskRes.predictions[0].recycability;
+        this.footprint = flaskRes.predictions[0].carbon_footprint;
+        this.production = flaskRes.predictions[0].globalProduction;
+        this.degradeTime = flaskRes.predictions[0].time_to_degrade;
+        this.plasticDescription = flaskRes.predictions[0].description;
+        this.hazard = flaskRes.predictions[0].hazard;
+        this.productNameFromFlask = flaskRes.predictions[0].class;
+        this.fetchService.getYtVideos({
+          imageUrl: res.imageUrl,
+          productName: this.productName,
+          plasticType: this.plasticType,
+          plasticProduct: this.productNameFromFlask
+        }).subscribe((res2: any) => {
+          this.result = res2.ytResult.items;
+          for (const video of this.result) {
+            video.videoUrl = `https://www.youtube.com/embed/${video.id.videoId}`;
+            video.videoUrl = this.dom.bypassSecurityTrustResourceUrl(video.videoUrl);
+          }
+          console.log(this.result);
+          this.imageUrl = res.imageUrl;
+          this.loading = false;
+        });
+      });
     }, (err: any) => {
       console.log(err);
       this.toastrService.show('',

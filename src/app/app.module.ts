@@ -24,6 +24,11 @@ import {AuthGuard} from './auth.guard';
 import { HistoryComponent } from './history/history.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { PlasticDetailsComponent } from './plastic-details/plastic-details.component';
+import { GraphComponent } from './graph/graph.component';
+// @ts-ignore
+import * as PlotlyJS from 'plotly.js/dist/plotly.js';
+import { PlotlyModule } from 'angular-plotly.js';
+
 
 const formSetting: any = {
   redirectDelay: 0,
@@ -31,6 +36,8 @@ const formSetting: any = {
     success: true,
   },
 };
+PlotlyModule.plotlyjs = PlotlyJS;
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,9 +46,11 @@ const formSetting: any = {
     RecyleNowComponent,
     ShellComponent,
     HistoryComponent,
-    PlasticDetailsComponent
+    PlasticDetailsComponent,
+    GraphComponent
   ],
   imports: [
+    PlotlyModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
